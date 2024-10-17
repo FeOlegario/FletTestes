@@ -1,13 +1,9 @@
 # import flet as ft
-from home import *
-
-
-
-
-
+from apps.home.home import *
+from apps.consultor.consultor_page import *
 
 def main(page: ft.Page):
-    page.title = 'Oi'
+    page.title = 'ScriptHub'
     page.theme_mode = "light"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -15,6 +11,8 @@ def main(page: ft.Page):
     page.window.min_width = 703
     page.window.height = 537
     page.window.width = 703
+    page.window.maximizable = False
+    page.window_resizable = True 
     page.bgcolor = "#ffffff"
     page.update()
 
@@ -22,9 +20,10 @@ def main(page: ft.Page):
     def router(route):
         page.views.clear()
 
-        # if page.route == "/landing":
-        #     landing = LandingPage(page)
-        #     page.views.append(landing)
+        if page.route == "/consultor":
+            landing = consultor_page(page)
+            page.title='Consultor'
+            page.views.append(landing)
 
         if page.route == "/home":
             home = HomePage(page)
@@ -33,7 +32,7 @@ def main(page: ft.Page):
         page.update()
 
     page.on_route_change = router
-    page.go("/home")
+    page.go("/consultor")
 
 
 ft.app(target=main, assets_dir="assets")
