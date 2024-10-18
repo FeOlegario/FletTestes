@@ -21,12 +21,13 @@ def main(page: ft.Page):
         page.views.clear()
 
         if page.route == "/consultor":
-            landing = consultor_page(page)
+            consultor = consultor_page(page)
             page.title='Consultor'
-            page.views.append(landing)
+            page.views.append(consultor)
 
         if page.route == "/home":
             home = HomePage(page)
+            page.title='ScriptHub'
             page.views.append(home)
 
         page.update()
