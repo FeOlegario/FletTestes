@@ -20,20 +20,30 @@ class HomePage(ft.View):
             content= ft.Column(
                 spacing=2,
                 controls=[
-                    ft.Row([ft.Image(src=f"apps/assets/Lupa.png", width=90, height=90)],ft.MainAxisAlignment.CENTER),
-                    ft.Row([ft.Text('Consultor', size=18,text_align=ft.TextAlign.RIGHT,)],ft.MainAxisAlignment.CENTER)
+                    ft.Row([ft.Image(src=f"apps/assets/Lupa.png", width=70, height=90)],ft.MainAxisAlignment.CENTER),
+                    ft.Row([ft.Text('Consultor', size=18,text_align=ft.TextAlign.RIGHT,weight='w500')],ft.MainAxisAlignment.CENTER)
                 ]
             )
         )
 
         self.quantum = ft.Container(
             border_radius=8,
-            bgcolor="#43b2de",
+            padding=3,
+            bgcolor='#f8f9ff',
+            shadow=ft.BoxShadow(blur_radius=3, color=ft.colors.with_opacity(opacity=0.2,color='black'),offset=(0,1)),
             width=120,
             height=120,
-            content=ft.Image(src=f'apps/assets/quantum_png.png'),
-            
+            ink=True,
+            on_click=lambda e: page.go("/qauntum"),
+            content= ft.Column(
+                spacing=2,
+                controls=[
+                    ft.Row([ft.Image(src=f"apps/assets/Quantum.png", width=90, height=90)],ft.MainAxisAlignment.CENTER),
+                    ft.Row([ft.Text('Quantum', size=18,text_align=ft.TextAlign.RIGHT,weight='w500')],ft.MainAxisAlignment.CENTER)
+                ]
+            )
         )
+
         self.testt = ft.Container(
             border_radius=8,
             bgcolor="#43b2de",
@@ -42,18 +52,10 @@ class HomePage(ft.View):
             
         )
 
-        blocos_app = ft.Stack(
-            [
-                
-            ]
-        )
 
         self.page = page
 
         self.centro = ft.Container(
-            height=400,
-            # width= 800,
-            # bgcolor=ft.colors.AMBER, 
             content=ft.Column(
                 [
                     ft.Row([self.consultor, self.quantum],ft.MainAxisAlignment.CENTER,ft.CrossAxisAlignment.CENTER),
@@ -67,6 +69,7 @@ class HomePage(ft.View):
                 expand=True,
                 content=ft.Column(
                     controls=[self.centro],
+                    alignment=ft.MainAxisAlignment.CENTER,
                 )
             )
         ]
